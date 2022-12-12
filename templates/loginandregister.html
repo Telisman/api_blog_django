@@ -1,54 +1,53 @@
+{% extends "index.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>LoginAndRegister</title>
+	{% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/loginandregister.css' %}">
-
 </head>
 <body>
-
-<div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="#">
-			<h1>Create Account</h1>
-			<input type="text" placeholder="Username" />
-			<input type="password" placeholder="Password" />
-			<button>Register</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1>Sign in</h1>
-			<input type="text" placeholder="Username" />
-			<input type="password" placeholder="Password" />
-			<button>Login</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your username</p>
-				<button class="ghost" id="signIn">Login</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter username and start your journey </p>
-				<p>Or use demo version:<br>
-					Username: Demo <br>
-					Password: Demo1234
-				</p>
-
-				<button class="ghost" id="signUp">Register</button>
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form action="" method="post">
+				{% csrf_token %}
+				<h1>Create Account</h1>
+				<input type="text" name="username" maxlength="150" autofocus="" class="form-control" required="" id="id_username" placeholder="Username">
+				<input type="password" name="password1" autocomplete="new-password" class="form-control" required="" id="id_password1" placeholder="Password">
+				<input type="password" name="password2" autocomplete="new-password" class="form-control" required="" id="id_password2" placeholder="Repeat Password">
+				<input type="submit">Register</input>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<form action="#">
+				<h1>Sign in</h1>
+				<input type="text" placeholder="Username" />
+				<input type="password" placeholder="Password" />
+				<button>Login</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your username</p>
+					<button class="ghost" id="signIn">Login</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter username and start your journey </p>
+					<p>Or use demo version:<br>
+						Username: Demo <br>
+						Password: Demo1234
+					</p>
+					<button class="ghost" id="signUp">Register</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-
 </body>
-  <script src="{% static 'assets/js/logandreg.js' %}"></script>
-
+<script src="{% static 'assets/js/logandreg.js' %}"></script>
+{% endblock %}
 </html>

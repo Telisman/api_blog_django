@@ -1,16 +1,14 @@
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Blog</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-
   <!-- Favicons -->
   <link rel="icon"  href="{% static 'assets/img/favicon.png' %}">
   <link rel="apple-touch-icon"  href="{% static 'assets/img/apple-touch-icon.png' %}">
@@ -29,7 +27,6 @@
 </head>
 
 <body>
-
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
@@ -37,11 +34,10 @@
         <div class="hero-logo">
           <img class="" src="{% static 'assets/img/blog.jpg' %}"  >
         </div>
-
         <h1>Welcome to Blog API page</h1>
         <h2>Follow instructions <span class="typed" data-typed-items="Step 1: Register User, Step 2: Login, Step 3: Write a blog, Or use demo user"></span></h2>
         <div class="actions">
-          <a href="#about" class="btn-get-started">Get Strated</a>
+          <a href="{% url 'logandreg'%}" class="btn-get-started">Get Strated</a>
           <a href="#services" class="btn-services">My portfolio</a>
         </div>
       </div>
@@ -87,3 +83,4 @@
 </body>
 
 </html>
+{% endblock %}

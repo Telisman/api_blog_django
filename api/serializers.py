@@ -14,4 +14,4 @@ class UserSerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ['id', 'username','first_name','last_name']
+        fields = ['id', 'username','posts']
