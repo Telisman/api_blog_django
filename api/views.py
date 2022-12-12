@@ -5,6 +5,12 @@ from api.models import Post
 from rest_framework import permissions
 from api.permissions import IsOwnerOrReadOnly
 
+from django.shortcuts import render
+
+def LogAndReg(request):
+
+    return render(request, "loginandregister.html", {})
+
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
