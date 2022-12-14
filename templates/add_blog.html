@@ -17,7 +17,7 @@
   <form class="subscribe" method="post">
       {% csrf_token %}
     <input type="text" placeholder="Title" autocomplete="on" required="required" id="id_title">
-    <input type="text" placeholder="Body" autocomplete="on" required="required" id="id_body">
+    <textarea name="body" cols="40" rows="10" id="id_body" placeholder="Write something" spellcheck="false"></textarea>
    <select name="owner" required="" id="id_owner">
   <option value="" selected="">---------</option>
 
