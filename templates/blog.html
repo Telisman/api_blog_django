@@ -31,7 +31,7 @@
                                 <h2 class="hover-underline-animation mb-2 text-2xl font-bold tracking-tight text-white">
                                     <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
                                 </h2>
-                                <p class="mb-5 font-light text-gray-400">{{ blog.body|safe|truncatewords:25 }}</p>
+                                <p class="mb-5 font-light text-gray-400">{{ blog.body|safe|truncatewords:25 }}</p><a href="{% url 'update_blog' blog.pk %}">Edit</a>
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center space-x-4">
                                         <span class="font-medium text-white">{{ blog.owner }}</span>
