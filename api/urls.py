@@ -1,7 +1,7 @@
 from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
-from .views import LoginView
+from .views import LoginView,blog,BlogDetailView
 
 urlpatterns = [
     path('users/', views.UserList.as_view()),
@@ -11,7 +11,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('logandreg/', include('django.contrib.auth.urls')),
     path('logandreg/', LoginView.as_view(), name='logandreg'),
-
+    path('blog/', blog, name='blog'),
+    path('detail/<int:pk>', BlogDetailView.as_view(), name='blog_detail'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% load static %}
+{% if user.is_authenticated %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog_detail.css' %}">
+<body class="bg-gray-900" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
+<main class="mx-auto max-w-4xl"><div class="container mt-12"><div class="pb-[120px]"><div class="flex flex-wrap justify-center mx-[-16px]">
+    <div class="w-full px-4">
+        <div style="opacity: 1; transform: none;">
+            <div>
+                <h1 class="text-white font-bold text-3xl sm:text-4xl leading-tight sm:leading-tight mb-8">{{ post.title }}</h1>
+                <div class="flex flex-wrap items-center justify-between pb-4 mb-10 border-b border-[#E9ECF8]">
+                    <div class="flex flex-wrap items-center">
+                        <div class="flex items-center mr-10 mb-5">
+                            <div class="max-w-[40px] w-full h-[40px] rounded-full overflow-hidden mr-4">
+                            </div>
+                            <div class="w-full">
+                                <h4 class="text-base font-medium text-body-color mb-1">By: {{ post.owner }}</h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-5">
+                            <p class="flex items-center text-base text-body-color font-medium mr-5">
+                                <span class="mr-3"><svg width="15" height="15" viewBox="0 0 15 15" class="fill-current">
+                                </svg>
+                                </span>{{ post.created }}
+                            </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="postBody">
+                <h3 id="wahoo">{{ post.body }}</h3>
+</div>
+<link rel="modulepreload" href="/build/entry.client-7DI3YHOZ.js">
+            <link rel="modulepreload" href="/build/_shared/chunk-XVH2ATEM.js">
+            <link rel="modulepreload" href="/build/_shared/chunk-Z6SQIY6I.js">
+            <link rel="modulepreload" href="/build/_shared/chunk-XQ6IINGR.js">
+            <link rel="modulepreload" href="/build/root-DQ42KEJ2.js">
+            <link rel="modulepreload" href="/build/_shared/chunk-3HWMX7C3.js">
+            <link rel="modulepreload" href="/build/_shared/chunk-QGAP54UQ.js">
+            <link rel="modulepreload" href="/build/routes/blog/$slug-XKLNAY63.js">
+        </div>
+    </div>
+</body>
+
+
+{% endblock %}
+{% endif %}

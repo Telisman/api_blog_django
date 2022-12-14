@@ -9,6 +9,7 @@ from .forms import NewUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.views import View
+from django.views.generic import UpdateView,DetailView
 
 
 
@@ -22,10 +23,10 @@ class LoginView(View):
             user = authenticate(username=username ,password=password)
             if user is not None:
                 login(request ,user)
-                return redirect('home')
+                return redirect('blog')
             else:
                 messages.info(request ,'Login attemp failed.')
-                return redirect('logandreg')
+                return redirect('blog')
         return render(request ,'loginandregister.html' ,{'form' :form})
 
     def post(self ,request):
@@ -42,89 +43,6 @@ class LoginView(View):
         return render(request ,'loginandregister.html')
 
 
-
-
-
-
-
-# def register_login(request):
-#     if request.method == "POST":
-#         if 'login' in request.POST:
-#             username = request.POST['username']
-#             password = request.POST['password']
-#             user = authenticate(request, username=username, password=password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('home')
-#             else:
-#                 return redirect('login')
-#
-#
-#         elif 'register' in request.POST:
-#             form = NewUserForm()
-#             if form.is_valid():
-#                 user = form.save()
-#                 login(request, user)
-#                 messages.success(request, "Registration successful.")
-#                 return render(request,template_name="loginandregister.html")
-#             messages.error(request, "Unsuccessful registration. Invalid information.")
-#
-#     form = NewUserForm()
-#     return render(request=request, template_name="loginandregister.html", context={"register_form": form})
-#
-
-
-    # if request.method == "POST":
-    #     form = NewUserForm(request.POST)
-    #     if "register" in request.method == "POST":
-    #         if form.is_valid():
-    #             user = form.save()
-    #             login(request, user)
-    #             messages.success(request, "Registration successful.")
-    #             return render(request,template_name="loginandregister.html")
-    #         messages.error(request, "Unsuccessful registration. Invalid information.")
-    #
-    #     if "login" in request.method == "POST":
-    #
-            # username = request.POST['username']
-            # password = request.POST['password']
-            # user = authenticate(request, username=username, password=password)
-            # if user is not None:
-            #     login(request, user)
-            #     return redirect('home')
-            # else:
-            #     return redirect('login')
-    # form = NewUserForm()
-    # return render(request=request, template_name="loginandregister.html", context={"register_form": form})
-    #
-    #
-
-
-# def register_request(request):
-#     if request.method == "POST":
-#         form = NewUserForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             messages.success(request, "Registration successful.")
-#             return render(request,template_name="loginandregister.html")
-#         messages.error(request, "Unsuccessful registration. Invalid information.")
-#
-    # form = NewUserForm()
-    # return render(request=request, template_name="loginandregister.html", context={"register_form": form})
-#
-#
-# def login_request(request):
-#         if request.method == "POST":
-#             username = request.POST['username']
-#             password = request.POST['password']
-#             user = authenticate(request, username=username, password=password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('home')
-#         else:
-#             return redirect('login')
-#         return render(request, "home.html", {})
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
@@ -150,3 +68,23 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+
+
+def blog(request):
+    blog_post= Post.objects.all()
+    context = {
+        'blog_post': blog_post,
+    }
+    return render(request, 'blog.html', context)
+
+
+class BlogDetailView(DetailView):
+    model = Post
+    template_name = "blog_detail.html"
+
+
+
+class UpdateViewBlog(UpdateView):
+    model = Post
+    template_name = "update_blog.html"
+    fields = ['title','body']
