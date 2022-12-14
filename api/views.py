@@ -9,7 +9,7 @@ from .forms import NewUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.views import View
-from django.views.generic import UpdateView,DetailView
+from django.views.generic import UpdateView,DetailView, CreateView
 
 
 
@@ -88,3 +88,10 @@ class UpdateViewBlog(UpdateView):
     model = Post
     template_name = "update_blog.html"
     fields = ['title','body']
+
+
+class AddBlog(CreateView):
+    model = Post
+    template_name = 'add_blog.html'
+    fields = '__all__'
+

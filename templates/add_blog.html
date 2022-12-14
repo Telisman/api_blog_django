@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{% load static %}
+{% if user.is_authenticated %}
+{% block content %}
+<!--<div class="container">-->
+<!--    <form method="post" action="" >-->
+<!--        {% csrf_token %}-->
+<!--        {{ form.as_p }}-->
+<!--       <input type="submit">-->
+<!--    </form>-->
+<!--</div>-->
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
+
+<body translate="no" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
+  <div class="subscribe-box">
+  <h2>Subscribe to our mailing list</h2>
+  <form class="subscribe" method="post">
+      {% csrf_token %}
+    <input type="text" placeholder="Title" autocomplete="on" required="required" id="id_title">
+    <input type="text" placeholder="Body" autocomplete="on" required="required" id="id_body">
+   <select name="owner" required="" id="id_owner">
+  <option value="" selected="">---------</option>
+
+  <option value="1">davor</option>
+
+  <option value="2">DavorTelisman</option>
+
+  <option value="3">DavorTelisman1</option>
+
+  <option value="4">davortelisman@yahoo.com</option>
+
+  <option value="5">DavorTelisman2333</option>
+
+  <option value="6">damjan</option>
+
+  <option value="7">marko</option>
+
+  <option value="8">danijela</option>
+
+  <option value="9">DavorTelisman2323</option>
+
+  <option value="10">DavorTelisman666</option>
+
+  <option value="11">DavorTelisman777</option>
+
+  <option value="12">DavorTelisman888</option>
+
+  <option value="13">DavorTelisman999</option>
+
+  <option value="14">DavorTelisman10101</option>
+
+  <option value="15">DavorTelisman2585</option>
+
+  <option value="16">DavorTelisman25852</option>
+
+  <option value="17">davor321321321312</option>
+
+  <option value="18">NekoTamoDaleko</option>
+
+  <option value="19">Darko83</option>
+
+  <option value="20">dzigi</option>
+
+  <option value="21">Demo</option>
+
+</select>
+    <button type="submit"> <span>Subscribe</span></button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+{% endblock %}
+{% endif %}
