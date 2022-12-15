@@ -1,16 +1,19 @@
 from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
-from .views import LoginView,blog,BlogDetailView,UpdateViewBlog,AddBlog
+from .views import LoginView,blog,BlogDetailView,UpdateViewBlog,AddBlog,logout_user
 
 urlpatterns = [
-    path('users/', views.UserList.as_view()),
+    path('users/', views.UserList.as_view(),name='api_users'),
     path('users/<int:pk>/', views.UserDetail.as_view()),
-    path('posts/', views.PostList.as_view()),
+    path('posts/', views.PostList.as_view(),name='api_posts'),
     path('posts/<int:pk>/', views.PostDetail.as_view()),
     path('api-auth/', include('rest_framework.urls')),
+
     path('logandreg/', include('django.contrib.auth.urls')),
     path('logandreg/', LoginView.as_view(), name='logandreg'),
+    path('logout/', logout_user, name='logout'),
+
     path('blog/', include('django.contrib.auth.urls')),
     path('blog/', blog, name='blog'),
     path('blog/addBlog', include('django.contrib.auth.urls')),

@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 from api.models import Post
 from rest_framework import permissions,authentication
 from api.permissions import IsOwnerOrReadOnly
-from django.shortcuts import  render, redirect
+from django.shortcuts import render, redirect
 from .forms import NewUserForm
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.views import View
 from django.views.generic import UpdateView,DetailView, CreateView
 
@@ -42,7 +42,10 @@ class LoginView(View):
                 return redirect('logandreg')
         return render(request ,'loginandregister.html')
 
-
+def logout_user(request):
+    logout(request)
+    messages.success(request,('You are logout'))
+    return redirect('logandreg')
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()

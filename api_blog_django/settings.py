@@ -139,4 +139,4 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_URL = 'logandreg'
-LOGOUT_URL = 'home'
+LOGOUT_URL = 'logandreg'

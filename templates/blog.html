@@ -18,9 +18,9 @@
         <nav class="navbar">
             <ul>
                 <li><a href="{% url 'add_blog' %}">Add new blog</a></li>
-                <li><a href="#">API Blog</a></li>
-                <li><a href="#">API Users</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="{% url 'api_posts' %}">API Blog</a></li>
+                <li><a href="{% url 'api_users' %}">API Users</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
 
             </ul>
         </nav>
