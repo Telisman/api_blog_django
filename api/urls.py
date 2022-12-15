@@ -11,8 +11,11 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('logandreg/', include('django.contrib.auth.urls')),
     path('logandreg/', LoginView.as_view(), name='logandreg'),
+    path('blog/', include('django.contrib.auth.urls')),
     path('blog/', blog, name='blog'),
+    path('blog/addBlog', include('django.contrib.auth.urls')),
     path('blog/addBlog/', AddBlog.as_view(), name='add_blog'),
+    path('blog/detail', include('django.contrib.auth.urls')),
     path('blog/detail/<int:pk>', BlogDetailView.as_view(), name='blog_detail'),
     path('blog/detail/edit/<int:pk>', UpdateViewBlog.as_view(), name='update_blog'),
 ]

@@ -1,19 +1,33 @@
 {% extends "index.html" %}
 {% load static %}
-{% if user.is_authenticated %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
-<body class="bg-gray-900" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+{% if user.is_authenticated %}
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a href="{% url 'add_blog' %}">Add nre blog</a>
-  </div>
-</nav>
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
+<body class="bg-gray-900" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+
+<!--    Navbar section -->
+   <div class="justify-center p-0 max-w-[800px] m-auto">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'add_blog' %}">Add new blog</a></li>
+                <li><a href="#">API Blog</a></li>
+                <li><a href="#">API Users</a></li>
+                <li><a href="#">Logout</a></li>
+
+            </ul>
+        </nav>
+   </div>
+
+
+
     <section id="blog" class="pt-[40px]">
         <div class="container">
             <div class="flex flex-wrap mx-[-16px] overflow-x-hidden">
@@ -60,7 +74,13 @@
             </div>
         </div>
     </section>
+
 </body>
 
-{% endblock %}
+{% else %}
+
+<h1>Not login</h1>
 {% endif %}
+
+{% endblock %}
+
