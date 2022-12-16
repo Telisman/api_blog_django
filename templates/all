@@ -1,0 +1,139 @@
+{% extends "index.html" %}
+{% load static %}
+
+<!--<div class="container">-->
+<!--    <form method="post" action="" >-->
+<!--        {% csrf_token %}-->
+<!--        {{ form.as_p }}-->
+<!--       <input type="submit">-->
+<!--    </form>-->
+<!--</div>-->
+
+{% block content %}
+{% if user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
+<!--<link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">-->
+<!--<link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">-->
+<body id="'w">
+    <div class="container-fluid" >
+
+    </div>
+<div id='w'>
+   <div class="justify-center p-0 max-w-[800px] m-auto">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'add_blog' %}">Add new blog</a></li>
+                <li><a href="{% url 'api_posts' %}">API Blog</a></li>
+                <li><a href="{% url 'api_users' %}">API Users</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+
+            </ul>
+        </nav>
+   </div>
+
+
+  <canvas id="space">   <section id="blog" class="pt-[40px]">
+        <div class="container">
+            <div class="flex flex-wrap mx-[-16px] overflow-x-hidden">
+                <div class="w-full px-4">
+                    <div class="max-w-[600px] mx-auto text-center mb-[70px]">
+                        <span class="font-semibold text-lg text-primary block mb-2" data-projection-id="13" style="opacity: 1; transform: none;">My Random Thoughts</span>
+                        <h2 class="font-bold text-white text-3xl sm:text-4xl md:text-[45px] mb-5" data-projection-id="14" style="opacity: 1; transform: none;">Say what's on your mind!!</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="justify-center p-0 max-w-[800px] m-auto">
+
+                <section class="bg-gray-900" data-projection-id="16" style="opacity: 1;">
+                    <div class="py-6 px-4 mx-auto lg:px-6">
+                        <div class="grid gap-8 lg:grid-cols-1">
+                            <article class="p-6 rounded-lg border shadow-md bg-gray-800 border-gray-700">
+                              <form class="subscribe" method="post">
+                              {% csrf_token %}
+                                        <input type="text" placeholder="Title" autocomplete="on" required="required" id="id_title">
+                                        <textarea name="body" cols="40" rows="10" id="id_body" placeholder="Write something" spellcheck="false"></textarea>
+                                               <select name="owner" required="" id="id_owner">
+                                                  <option value="" selected="">---------</option>
+
+                                                  <option value="1">davor</option>
+
+                                                  <option value="2">DavorTelisman</option>
+
+                                                  <option value="3">DavorTelisman1</option>
+
+                                                  <option value="4">davortelisman@yahoo.com</option>
+
+                                                  <option value="5">DavorTelisman2333</option>
+
+                                                  <option value="6">damjan</option>
+
+                                                  <option value="7">marko</option>
+
+                                                  <option value="8">danijela</option>
+
+                                                  <option value="9">DavorTelisman2323</option>
+
+                                                  <option value="10">DavorTelisman666</option>
+
+                                                  <option value="11">DavorTelisman777</option>
+
+                                                  <option value="12">DavorTelisman888</option>
+
+                                                  <option value="13">DavorTelisman999</option>
+
+                                                  <option value="14">DavorTelisman10101</option>
+
+                                                  <option value="15">DavorTelisman2585</option>
+
+                                                  <option value="16">DavorTelisman25852</option>
+
+                                                  <option value="17">davor321321321312</option>
+
+                                                  <option value="18">NekoTamoDaleko</option>
+
+                                                  <option value="19">Darko83</option>
+
+                                                  <option value="20">dzigi</option>
+
+                                                  <option value="21">Demo</option>
+
+                                            </select>
+                                        <button type="submit"> <span>Subscribe</span></button>
+                          </form>
+
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </section></canvas>
+<a href="#" id="warp">WARP SPEED</a>
+</div>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+
+
+
+
+
+    <script src="{% static 'assets/js/add_blog.js' %}"></script>
+
+</body>
+
+{% else %}
+
+<h1>Not login</h1>
+{% endif %}
+
+{% endblock %}
+
+

@@ -5,11 +5,11 @@ from api.models import Post
 from rest_framework import permissions,authentication
 from api.permissions import IsOwnerOrReadOnly
 from django.shortcuts import render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm,AddBlog
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.views import View
-from django.views.generic import UpdateView,DetailView, CreateView
+from django.views.generic import UpdateView,DetailView
 
 
 
@@ -93,8 +93,16 @@ class UpdateViewBlog(UpdateView):
     fields = ['title','body']
 
 
-class AddBlog(CreateView):
-    model = Post
-    template_name = 'add_blog.html'
-    fields = '__all__'
+def AddNewBlog(request):
+    submitted = False
+    if request.method == "POST":
+        form = AddBlog(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'blog.html')
+    else:
+        pass
+
+    form = AddBlog
+    return render(request, "add_blog.html", {'form': form})
 

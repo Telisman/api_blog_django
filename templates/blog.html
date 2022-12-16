@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
 <body class="bg-gray-900" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,9 +18,10 @@
    <div class="justify-center p-0 max-w-[800px] m-auto">
         <nav class="navbar">
             <ul>
-                <li><a href="{% url 'add_blog' %}">Add new blog</a></li>
-                <li><a href="{% url 'api_posts' %}">API Blog</a></li>
-                <li><a href="{% url 'api_users' %}">API Users</a></li>
+                <li><a href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'add_blog' %}" >Add new blog</a></li>
+                <li><a href="{% url 'api_posts' %}" target="_blank">API Blog</a></li>
+                <li><a href="{% url 'api_users' %}" target="_blank">API Users</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
 
             </ul>
@@ -74,12 +76,32 @@
             </div>
         </div>
     </section>
-
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div class="bg">
+<div class="star-field">
+<div class="layer"></div>
+<div class="layer"></div>
+<div class="layer"></div>
+  </div>
+</div>
 </body>
 
 {% else %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/404.css' %}">
 
-<h1>Not login</h1>
+<div class="flex-container">
+  <div class="text-center">
+    <h1>
+      <span class="fade-in" id="digit1">4</span>
+      <span class="fade-in" id="digit2">0</span>
+      <span class="fade-in" id="digit3">4</span>
+    </h1>
+    <h3 class="fadeIn">LOGIN FAILED</h3>
+      <a href="{% url 'logandreg' %}"><button type="button" name="button">Return To Login</button></a>
+
+  </div>
+</div>
+
 {% endif %}
 
 {% endblock %}

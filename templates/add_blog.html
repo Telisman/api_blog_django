@@ -1,84 +1,87 @@
 {% extends "index.html" %}
 {% load static %}
-
 {% block content %}
 {% if user.is_authenticated %}
-<!--<div class="container">-->
-<!--    <form method="post" action="" >-->
-<!--        {% csrf_token %}-->
-<!--        {{ form.as_p }}-->
-<!--       <input type="submit">-->
-<!--    </form>-->
-<!--</div>-->
+
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
 
-<body translate="no" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
-  <div class="subscribe-box">
-  <h2>Subscribe to our mailing list</h2>
-  <form class="subscribe" method="post">
-      {% csrf_token %}
-    <input type="text" placeholder="Title" autocomplete="on" required="required" id="id_title">
-    <textarea name="body" cols="40" rows="10" id="id_body" placeholder="Write something" spellcheck="false"></textarea>
-   <select name="owner" required="" id="id_owner">
-  <option value="" selected="">---------</option>
 
-  <option value="1">davor</option>
+<!--        Div container start         -->
+<div class="container-fluid">
+    <div class="justify-center p-0 max-w-[800px] m-auto">
 
-  <option value="2">DavorTelisman</option>
+<!--                 Navbar start                    -->
+        <nav class="navbar" style="color:white;">
+            <ul>
+                <li><a href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'add_blog' %}" >Add new blog</a></li>
+                <li><a href="{% url 'api_posts' %}" target="_blank">API Blog</a></li>
+                <li><a href="{% url 'api_users' %}" target="_blank">API Users</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+<!--                Navbar end             -->
 
-  <option value="3">DavorTelisman1</option>
 
-  <option value="4">davortelisman@yahoo.com</option>
+<!--                        Owl picture         -->
+        <div class="owl" >
 
-  <option value="5">DavorTelisman2333</option>
+        </div>
+<!--                        End  owl picture    -->
 
-  <option value="6">damjan</option>
+<!--                Form start          -->
+        <div class="container">
+            <section>
+                <form method="post">
+                    {% csrf_token %}
+                    <label>
+                        <input class="form-control" name="title" id="id_title" type="text" required />
+                        <div class="label-text">Blog Title</div>
+                    </label>
 
-  <option value="7">marko</option>
+                    <label>
+                        <textarea name="body"  rows="1" class="form-control" id="id_body" spellcheck="false" required ></textarea>
+                        <div class="label-text">Tell us something</div>
+                    </label>
 
-  <option value="8">danijela</option>
+                    <input type="hidden" name="owner" class="form-control" value="" id="user">
+                    <button type="submit" value="Submit">Submit</button>
+                </form>
+            </section>
+        </div>
 
-  <option value="9">DavorTelisman2323</option>
-
-  <option value="10">DavorTelisman666</option>
-
-  <option value="11">DavorTelisman777</option>
-
-  <option value="12">DavorTelisman888</option>
-
-  <option value="13">DavorTelisman999</option>
-
-  <option value="14">DavorTelisman10101</option>
-
-  <option value="15">DavorTelisman2585</option>
-
-  <option value="16">DavorTelisman25852</option>
-
-  <option value="17">davor321321321312</option>
-
-  <option value="18">NekoTamoDaleko</option>
-
-  <option value="19">Darko83</option>
-
-  <option value="20">dzigi</option>
-
-  <option value="21">Demo</option>
-
-</select>
-    <button type="submit"> <span>Subscribe</span></button>
-  </form>
+<!--            Form end        -->
+    </div>
 </div>
+
+<!--        Div container end           -->
+
+<!--            Background   start      -->
+<div class="bg">
+    <div class="star-field">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+    </div>
+</div>
+<!--                Background end              -->
+
+<!--        script start    -->
+<script>
+                         function goBack() {
+                              window.history.back();
+                         }
+                        var name ="{{ user.id }}";
+                        document.getElementById("user").value = name;
+
+    </script>
+<!--             script end          -->
+<script src="{% static 'assets/js/add_blog.js' %}"></script>
+
 {% endif %}
-
-
-
-
-
-
-
-
-</body>
-
 
 {% endblock %}
-{% endif %}
+
+
