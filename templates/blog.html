@@ -1,7 +1,8 @@
 {% extends "index.html" %}
 {% load static %}
 {% block content %}
-{% if user.is_authenticated %}
+
+
 
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
@@ -29,7 +30,7 @@
    </div>
 
 
-
+{% if user.is_authenticated %}
     <section id="blog" class="pt-[40px]">
         <div class="container">
             <div class="flex flex-wrap mx-[-16px] overflow-x-hidden">
@@ -57,7 +58,11 @@
                                 <h2 class="hover-underline-animation mb-2 text-2xl font-bold tracking-tight text-white">
                                     <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
                                 </h2>
-                                <p class="mb-5 font-light text-gray-400">{{ blog.body|safe|truncatewords:25 }}</p><a href="{% url 'update_blog' blog.pk %}">Edit</a>
+
+                                        <p class="mb-5 font-light text-gray-400">{{ blog.body|safe|truncatewords:25 }}</p>
+                                        {% if user.id == blog.owner.id %}
+                                             <a href="{% url 'update_blog' blog.pk %}">Edit</a>
+                                        {% endif %}
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center space-x-4">
                                         <span class="font-medium text-white">{{ blog.owner }}</span>
@@ -102,7 +107,9 @@
   </div>
 </div>
 
+
 {% endif %}
+
 
 {% endblock %}
 
