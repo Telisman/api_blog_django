@@ -1,11 +1,10 @@
-{% extends "index.html" %}
+{% extends "blog.html" %}
 {% load static %}
 {% block content %}
 {% if user.is_authenticated %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
+
 
 
 <!--        Div container start         -->
@@ -13,15 +12,7 @@
     <div class="justify-center p-0 max-w-[800px] m-auto">
 
 <!--                 Navbar start                    -->
-        <nav class="navbar" style="color:white;">
-            <ul>
-                <li><a href="{% url 'blog' %}">Blog</a></li>
-                <li><a href="{% url 'add_blog' %}" >Add new blog</a></li>
-                <li><a href="{% url 'api_posts' %}" target="_blank">API Blog</a></li>
-                <li><a href="{% url 'api_users' %}" target="_blank">API Users</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            </ul>
-        </nav>
+
 <!--                Navbar end             -->
 
 
@@ -59,13 +50,7 @@
 <!--        Div container end           -->
 
 <!--            Background   start      -->
-<div class="bg">
-    <div class="star-field">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-    </div>
-</div>
+
 <!--                Background end              -->
 
 <!--        script start    -->
