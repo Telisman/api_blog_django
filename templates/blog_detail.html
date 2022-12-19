@@ -1,23 +1,11 @@
-{% extends "index.html" %}
+{% extends "blog.html" %}
 {% load static %}
 {% block content %}
 {% if user.is_authenticated %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog_detail.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
 <body class="bg-gray-900" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
-  <div class="justify-center p-0 max-w-[800px] m-auto">
-        <nav class="navbar">
-            <ul>
-                <li><a href="{% url 'blog' %}">Blog</a></li>
-                <li><a href="{% url 'add_blog' %}" >Add new blog</a></li>
-                <li><a href="{% url 'api_posts' %}" target="_blank">API Blog</a></li>
-                <li><a href="{% url 'api_users' %}" target="_blank">API Users</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
 
-            </ul>
-        </nav>
-   </div>
 <main class="mx-auto max-w-4xl"><div class="container mt-12"><div class="pb-[120px]"><div class="flex flex-wrap justify-center mx-[-16px]">
     <div class="w-full px-4">
         <div style="opacity: 1; transform: none;">
@@ -58,13 +46,7 @@
 </div>
 </div>
 </div>
-      <div class="bg">
-    <div class="star-field">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-    </div>
-</div>
+
 </main>
 
 {% else %}

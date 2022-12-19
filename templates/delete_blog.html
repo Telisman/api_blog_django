@@ -1,0 +1,14 @@
+{% extends "blog.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<p>{{ post.title }}}</p>
+<p>  {{ post.body }}</p>
+<form method="post">
+    {% csrf_token %}
+    <strong>Are you sure?</strong>
+    <button class="btn">Delete post!</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,4 +1,5 @@
 {% load static %}
+{% if user.is_authenticated %}
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bggraound.css' %}">
@@ -30,7 +31,7 @@
 <!--    block content start     -->
 {% block content %}
 
-{% if user.is_authenticated %}
+
 
 <!--    section start           -->
     <section id="blog" class="pt-[40px]">
@@ -67,7 +68,8 @@
 
                                         <p class="mb-5 font-light text-gray-400">{{ blog.body|safe|truncatewords:25 }}</p>
                                         {% if user.id == blog.owner.id %}
-                                             <a href="{% url 'update_blog' blog.pk %}">Edit</a>
+                                            <button id="neonShadow">  <a href="{% url 'update_blog' blog.pk %}"><span>Edit</span></a></button>
+                                            <button id="neonShadow">  <a href="{% url 'delete_blog' blog.pk %}"><span>Delete</span></a></button>
                                         {% endif %}
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center space-x-4">
@@ -95,7 +97,20 @@
 
 
 <!--    error message start     -->
-{% else %}
+
+
+<!--error message ends      -->
+
+{% endblock %}
+    <div class="bg">
+        <div class="star-field">
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+        </div>
+    </div>
+<!--    background  start       -->
+    {% else %}
 <div class="flex-container">
   <div class="text-center">
     <h1>
@@ -109,17 +124,7 @@
   </div>
 </div>
 
-<!--error message ends      -->
-{% endif %}
-{% endblock %}
-<!--    background  start       -->
-    <div class="bg">
-        <div class="star-field">
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-        </div>
-    </div>
 <!-- background end     -->
 </body>
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/404.css' %}">
+{% endif %}

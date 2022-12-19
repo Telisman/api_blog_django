@@ -9,7 +9,8 @@ from .forms import NewUserForm,AddBlog
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.views import View
-from django.views.generic import UpdateView,DetailView
+from django.urls import reverse_lazy
+from django.views.generic import UpdateView,DetailView, DeleteView
 
 
 
@@ -106,3 +107,7 @@ def AddNewBlog(request):
     form = AddBlog
     return render(request, "add_blog.html", {'form': form})
 
+class DeleteBlog(DeleteView):
+    model = Post
+    template_name = "delete_blog.html"
+    success_url = reverse_lazy('blog')
