@@ -1,7 +1,7 @@
 from rest_framework import generics
 from api import serializers
 from django.contrib.auth.models import User
-from api.models import Post
+from api.models import Post,Category
 from rest_framework import permissions,authentication
 from api.permissions import IsOwnerOrReadOnly
 from django.shortcuts import render, redirect
@@ -69,9 +69,18 @@ class PostList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
+    queryset = Category.objects.all()
     serializer_class = serializers.PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+
+class CategoryList(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = serializers.CategorySerializer
+
+
+class CategoryDetail(generics.RetrieveAPIView):
+    queryset = Category.objects.all()
+    serializer_class = serializers.CategorySerializer
 
 
 def blog(request):

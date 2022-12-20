@@ -6,6 +6,10 @@ from .views import LoginView,blog,BlogDetailView,UpdateViewBlog,logout_user,AddN
 urlpatterns = [
     path('users/', views.UserList.as_view(),name='api_users'),
     path('users/<int:pk>/', views.UserDetail.as_view()),
+
+    path('category/', views.CategoryList.as_view(),name='category_name'),
+    # path('category/<int:pk>/', views.CategoryDetail.as_view()),
+
     path('posts/', views.PostList.as_view(),name='api_posts'),
     path('posts/<int:pk>/', views.PostDetail.as_view()),
     path('api-auth/', include('rest_framework.urls')),
