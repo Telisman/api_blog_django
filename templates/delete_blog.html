@@ -3,12 +3,28 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-<p>{{ post.title }}}</p>
-<p>  {{ post.body }}</p>
-<form method="post">
-    {% csrf_token %}
-    <strong>Are you sure?</strong>
-    <button class="btn">Delete post!</button>
-</form>
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog_detail.css' %}">
+<div class="slider-content">
+  <div class="number-wrapper">
+    <div class="number-count">
+      <div class="number">{{post.id}}</div>
+    </div>
+  </div>
+  <div class="slider-wrapper">
+    <div class="slider-container">
+            <div class="txt-wrapper">
+              <h2><span>{{post.title}}</span> </h2>
+              <p class="excerpt">{{ post.body }} </p>
+              <p class="excerpt1">{{ post.owner }} - {{ post.created }} </p>
+            </div>
+          </div>
+      <form method="post">
+            {% csrf_token %}
+            <strong>Are you sure?</strong>
+            <button class="btn">Delete post!</button>
+        </form>
+    </div>
+  </div>
+
 {% endif %}
 {% endblock %}
