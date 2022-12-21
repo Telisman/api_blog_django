@@ -3,6 +3,7 @@ from django.urls import reverse
 
 
 class Category(models.Model):
+    # id = models.AutoField(primary_key=True, editable=False)
     category_name = models.CharField(max_length=50,default='')
 
 class Post(models.Model):

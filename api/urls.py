@@ -8,7 +8,7 @@ urlpatterns = [
     path('users/<int:pk>/', views.UserDetail.as_view()),
 
     path('category/', views.CategoryList.as_view(),name='category_name'),
-    # path('category/<int:pk>/', views.CategoryDetail.as_view()),
+    path('category/<int:pk>/', views.CategoryDetail.as_view()),
 
     path('posts/', views.PostList.as_view(),name='api_posts'),
     path('posts/<int:pk>/', views.PostDetail.as_view()),

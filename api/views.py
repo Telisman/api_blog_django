@@ -14,7 +14,7 @@ from django.views.generic import UpdateView,DetailView, DeleteView
 
 
 
-
+# Login and registration view
 class LoginView(View):
     def get(self ,request):
         form = NewUserForm()
@@ -43,11 +43,17 @@ class LoginView(View):
                 return redirect('logandreg')
         return render(request ,'loginandregister.html')
 
+
+
+# Logout view
 def logout_user(request):
     logout(request)
     messages.success(request,('You are logout'))
     return redirect('logandreg')
 
+
+
+# Users api view: display list of users and users detail
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
@@ -58,6 +64,7 @@ class UserDetail(generics.RetrieveAPIView):
     serializer_class = serializers.UserSerializer
 
 
+# Post api view: display list of posts and posts detail
 
 class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
@@ -69,10 +76,12 @@ class PostList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.all()
+    queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
 
+
+# Category api view: display list of Category and Categorys detail
 class CategoryList(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
@@ -82,7 +91,7 @@ class CategoryDetail(generics.RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
 
-
+# blog view page: display all blogs
 def blog(request):
     blog_post= Post.objects.all()
     context = {
@@ -90,19 +99,19 @@ def blog(request):
     }
     return render(request, 'blog.html', context)
 
-
+# display blogs detail
 class BlogDetailView(DetailView):
     model = Post
     template_name = "blog_detail.html"
 
 
-
+# Update blog page using django UpdateView
 class UpdateViewBlog(UpdateView):
     model = Post
     template_name = "update_blog.html"
     fields = ['title','body']
 
-
+# Add new blog page, using form AddBlog
 def AddNewBlog(request):
     submitted = False
     if request.method == "POST":
@@ -116,6 +125,7 @@ def AddNewBlog(request):
     form = AddBlog
     return render(request, "add_blog.html", {'form': form})
 
+# Delete blog page: DeleteView
 class DeleteBlog(DeleteView):
     model = Post
     template_name = "delete_blog.html"
