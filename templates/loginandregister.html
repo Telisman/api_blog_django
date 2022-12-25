@@ -10,6 +10,7 @@
 </head>
 <body>
 	<div class="container" id="container">
+<!--		<h1 style="color:green;">{{ info }}</h1>-->
 		<div class="form-container sign-up-container">
 			<form action="" method="post">
 				{% csrf_token %}
@@ -48,6 +49,8 @@
 			</div>
 		</div>
 	</div>
+	<div class="backbutton" ><button type="button" class="btn btn-secondary" style="border:1px solid white;"><a href="{% url 'home' %}" style="color:white;">Home Page</a></button></div>
+
 </body>
 <script src="{% static 'assets/js/logandreg.js' %}"></script>
 {% endblock %}

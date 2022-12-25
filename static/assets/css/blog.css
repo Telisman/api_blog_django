@@ -342,3 +342,9 @@ button:hover {
   }
 }
 
+.info-message {
+    font-size: 45px;
+    text-align: center;
+    color: white;
+    border: none;
+}

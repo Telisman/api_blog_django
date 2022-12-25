@@ -1,0 +1,54 @@
+{% load static %}
+{% if user.is_authenticated %}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/welcome.css' %}">
+{% block content %}
+                <div class="welcome-page">
+                  <div class="corner"></div>
+                  <div class="corner"></div>
+                  <div class="corner"></div>
+                  <div class="corner"></div>
+                  <div class="content">
+                    <p data-shadow="WELCOME"><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span></p>
+                  </div>
+                  <div class="right-vert-line"></div>
+                  <div class="left-vert-line"></div>
+                  <div class="continue">{{ info }}</div>
+                </div>
+    <div class="container">
+
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+    <!-- Title -->
+    <h1 class="overlay__title">
+      Hey, would you like to learn how to create a
+      <span class="text-gradient">generative</span> UI just like this?
+    </h1>
+    <!-- Description -->
+    <p class="overlay__description">
+      In this tutorial we will be creating a generative “orb” animation
+      using pixi.js, picking some lovely random colors and pulling it all
+      together in a nice frosty UI.
+      <strong>We're gonna talk accessibility, too.</strong>
+    </p>
+    <!-- Buttons -->
+    <div class="overlay__btns">
+
+      <button class="overlay__btn overlay__btn--transparent">
+        <a href="https://georgefrancis.dev/writing/create-a-generative-landing-page-and-webgl-powered-background/" target="_blank">
+
+          View Tutorial
+        </a>
+      </button>
+
+      <button class="overlay__btn overlay__btn--colors">
+        <span>Randomise Colors</span>
+        <span class="overlay__btn-emoji">🎨</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% endif %}

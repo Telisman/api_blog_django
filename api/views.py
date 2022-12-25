@@ -36,8 +36,7 @@ class LoginView(View):
             if form.is_valid():
                 user = form.save()
                 login(request, user)
-                messages.success(request ,'Account has been created succesfully')
-                return redirect('logandreg')
+                return render(request,'blog.html',{ "info":"Registration successful!" + " New user created: " + request.POST.get('username')})
             else:
                 messages.error(request ,form.errors)
                 return redirect('logandreg')
