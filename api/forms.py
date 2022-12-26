@@ -12,11 +12,12 @@ class NewUserForm(UserCreationForm):
 class AddBlog(ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'body', 'owner')
+        fields = ('title', 'body', 'owner','category')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
             'owner': forms.TextInput(
                 attrs={'class': 'form-control', 'value': '', 'id': 'user', 'type': 'hidden'}),
+            'category': forms.Select(attrs={'class': 'form-control'}),
         }

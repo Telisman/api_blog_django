@@ -1,156 +1,33 @@
 
 
-
-.owl{
-    margin:auto;
-    margin-top: 25%;
-    width: 211px;
-    height: 108px;
-    background-image: url(https://dash.readme.io/img/owl-login.png);
+#add_blog {
+margin-top:2%;
+align-items: center;
+justify-content: center;
 }
 
-div.container{
-  align-items: center;
-  justify-content: center;
-}
 
-/* form design */
-
-form {
+#add_blog form {
   text-align: center;
   border: 1px solid #4A4A4A;
   padding: 30px;
+  color:white;
 }
-
-label {
-  display: block;
-  letter-spacing: 4px;
-  padding-top: 30px;
+#add_blog form label {
+  color:red;
   text-align: center;
+  font-size:24px;
+  margin-bottom: 3%;
 }
 
-/* animation for the text to float up */
-
-label .label-text {
-  color: #9B9B9B;
-  cursor: text;
-  font-size: 15px;
-  line-height: 20px;
-  text-transform: uppercase;
-  -moz-transform: translateY(-34px);
-  -ms-transform: translateY(-34px);
-  -webkit-transform: translateY(-34px);
-  transform: translateY(-34px);
-  transition: all 0.3s;
+input {
+     color: black;
+     text-align: center;
+     font-size:24px;
 }
-
-/* remove the input box styling */
-label input {
-  background-color: transparent;
+textarea {
   border: 0;
-  border-bottom: 2px solid #4A4A4A;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 1px;
-  outline: 0;
-  padding: 5px 20px;
+  color: black;
+  font-size: 24px;
   text-align: center;
-  transition: all 0.3s;
-  width: 200px;
-}
-
-/* once you click in the input the input width box animates */
-
-label input:focus {
-  max-width: 100%;
-  width: 400px;
-}
-
-/* the text floats up and turns white */
-
-label input:focus + .label-text {
-  color: #F0F0F0;
-  font-size: 13px;
-  margin-top: 10px;
-  -moz-transform: translateY(-74px);
-  -ms-transform: translateY(-74px);
-  -webkit-transform: translateY(-74px);
-  transform: translateY(-74px);
-}
-
-/* the text floats up during form validation */
-
-label input:valid + .label-text {
-  font-size: 13px;
-  -moz-transform: translateY(-74px);
-  -ms-transform: translateY(-74px);
-  -webkit-transform: translateY(-74px);
-  transform: translateY(-74px);
-}
-
-/* textarea styling */
-
-label textarea {
-  background-color: transparent;
-  border: 0;
-  border-bottom: 2px solid #4A4A4A;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 1px;
-  outline: 0;
-  padding: 5px 20px;
-  text-align: center;
-  transition: all 0.3s;
-  width: 200px;
-
-}
-
-/* once you click in the input the input width box animates */
-
-label textarea:focus {
-  max-width: 100%;
-  width: 400px;
-}
-
-/* the text floats up and turns white */
-
-label textarea:focus + .label-text {
-  color: #F0F0F0;
-  font-size: 13px;
-  margin-top: 10px;
-  -moz-transform: translateY(-74px);
-  -ms-transform: translateY(-74px);
-  -webkit-transform: translateY(-74px);
-  transform: translateY(-74px);
-}
-
-/* the text floats up during form validation */
-
-label textarea:valid + .label-text {
-  font-size: 13px;
-  -moz-transform: translateY(-74px);
-  -ms-transform: translateY(-74px);
-  -webkit-transform: translateY(-74px);
-  transform: translateY(-74px);
-}
-
-button {
-  background: transparent;
-  color: #F0F0F0;
-  border: 2px solid #F0F0F0;
-  font-size: 15px;
-  letter-spacing: 2px;
-  padding: 20px 75px;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: inline-block;
-  margin: 15px 30px;
-  -webkit-transition: all 0.4s;
-	-moz-transition: all 0.4s;
-	transition: all 0.4s;
-}
-
-button:hover, button:focus {
-  background-color: white;
-  color: #333333;
 }
