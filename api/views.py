@@ -117,7 +117,7 @@ def AddNewBlog(request):
         form = AddBlog(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'blog.html')
+            return render(request, 'add_blog.html',{"info":"You created new blog"})
     else:
         pass
 

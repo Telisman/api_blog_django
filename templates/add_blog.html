@@ -4,6 +4,7 @@
 {% if user.is_authenticated %}
 <link rel="stylesheet" type="text/css" href="{% static 'assets/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
+<div class="info-message"><p style=" font-size: 45px;text-align: center; color: white; border: none;">{{ info }}</p> </div>
   <div class="container" id="add_blog">
     <form class="w-full max-w-lg" method="post">
       {% csrf_token %}
