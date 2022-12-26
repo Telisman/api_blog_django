@@ -6,7 +6,7 @@
   bottom: 0;
   background: black;
   z-index: 1;
-  animation: moveTop 2s 11s forwards;
+  animation: moveTop 2s 7s forwards;
   color:white;
 }
 
