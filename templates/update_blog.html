@@ -1,55 +1,30 @@
 {% extends "blog.html" %}
 {% load static %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/update_blog.css' %}">
+
 {% if user.is_authenticated %}
     {% if user.id == post.owner.id %}
+      <div class="container" id="update_blog">
+          <form class="w-full max-w-lg" method="post">
+              {% csrf_token%}
+              {{ form.as_p}}
+              <button type="submit" value="Submit">Submit</button>
 
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
-<!--        Div container start         -->
-<div class="container-fluid">
-    <div class="justify-center p-0 max-w-[800px] m-auto">
+          </form>
+      </div>
 
-<!--                        Owl picture         -->
-        <div class="owl" >
-        </div>
-<!--                        End  owl picture    -->
 
-<!--                Form start          -->
-        <div class="container">
-            <section>
-                <form method="post">
-                    {% csrf_token %}
-<!--                    {{ form.as_p }}-->
-                    <label>
-                        <input  name="title" id="id_title" type="text"  />
-                        <div class="label-text">Blog Title</div>
-                    </label>
 
-                    <label>
-                        <textarea name="body"  rows="1"  id="id_body" spellcheck="false"  ></textarea>
-                        <div class="label-text">Tell us something</div>
-                    </label>
 
-                    <input type="hidden" name="owner" class="form-control" value="" id="user">
-                    <button type="submit" value="Submit">Submit</button>
-                </form>
-            </section>
-        </div>
 
-<!--            Form end        -->
-    </div>
-</div>
 
-<!--        Div container end           -->
 
-<!--        script start    -->
-<script>
-                        var name ="{{ user.id }}";
-                        document.getElementById("user").value = name;
 
+    <script>
+        var name ="{{ user.id }}";
+        document.getElementById("user").value = name;
     </script>
-<!--             script end          -->
-<script src="{% static 'assets/js/add_blog.js' %}"></script>
 
     {% endif %}
 {% endif %}

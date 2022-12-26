@@ -108,7 +108,7 @@ class BlogDetailView(DetailView):
 class UpdateViewBlog(UpdateView):
     model = Post
     template_name = "update_blog.html"
-    fields = ['title','body']
+    fields = ['title','body','category']
 
 # Add new blog page, using form AddBlog
 def AddNewBlog(request):
