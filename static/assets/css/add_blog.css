@@ -31,3 +31,15 @@ textarea {
   font-size: 24px;
   text-align: center;
 }
+select {
+  color: black;
+  text-align: center;
+    font-size: 24px;
+
+    border: 0;
+}
+
+select option {
+  font-size: 24px;
+
+}
