@@ -110,6 +110,8 @@ class UpdateViewBlog(UpdateView):
     template_name = "update_blog.html"
     fields = ['title','body','category']
 
+
+
 # Add new blog page, using form AddBlog
 def AddNewBlog(request):
     submitted = False

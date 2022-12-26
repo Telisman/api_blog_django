@@ -23,15 +23,16 @@
 
 
 .slider-content {
-  position:relative;
-  max-width: 38rem;
-  height:75%;
-  background:tra;
-  margin: 0 auto;
-  overflow:hidden;
-  box-shadow: 0 0 35px 20px rgba(79,69,66,0.2);
-  margin-top: 5%;
-  text-align: center;
+    position: relative;
+    max-width: 38rem;
+    background: black;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 0 35px 20px rgb(79 69 66 / 20%);
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    border-radius: 10px;
 }
 .txt-wrapper {
 margin-top:5%;
@@ -41,7 +42,8 @@ margin-top:5%;
 .txt-wrapper h2 {
 margin-top:5%;
 margin-bottom:5%;
-font-size:4vw;
+
+font-size:3vw;
 font-family: 'Merriweather', serif;
 font-weight: 900;
 }
