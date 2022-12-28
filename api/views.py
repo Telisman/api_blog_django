@@ -38,10 +38,10 @@ def api_detail_blog_view(request):
         return Response(serializers.data)
 
 @api_view(['PUT', ])
-def api_update_blog_view(request):
+def api_update_blog_view(request,pk):
 
     try:
-        blog_post = Post.objects.get()
+        blog_post = Post.objects.get(id=pk)
     except Post.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -55,10 +55,10 @@ def api_update_blog_view(request):
         return Response(serializers.errors,status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['DELETE', ])
-def api_delete_blog_view(request):
+def api_delete_blog_view(request,pk):
 
     try:
-        blog_post = Post.objects.get()
+        blog_post = Post.objects.get(id=pk)
     except Post.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
