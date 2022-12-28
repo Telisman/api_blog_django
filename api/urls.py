@@ -7,7 +7,7 @@ urlpatterns = [
     path('users/', views.UserList.as_view(),name='api_users'),
     path('users/<int:pk>/', views.UserDetail.as_view()),
     path('api-token-auth/', views.api_detail_blog_view),
-    path('api-token-auth/update/<int:pk>', views.api_update_blog_view),
+    path('api-token-auth/edit/<int:pk>', views.api_update_blog_view),
     path('api-token-auth/delete/<int:pk>', views.api_delete_blog_view),
     path('create', views.api_create_blog_view),
 

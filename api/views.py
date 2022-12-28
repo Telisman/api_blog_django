@@ -46,12 +46,12 @@ def api_update_blog_view(request,pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "PUT":
-        serializers = PostSerializer(blog_post)
+        serializers = PostSerializer(blog_post,data=request.data)
         data ={}
         if serializers.is_valid():
             serializers.save()
             data["success"] = "update successful"
-            return Response(data=data)
+            return Response(serializers.data)
         return Response(serializers.errors,status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['DELETE', ])
