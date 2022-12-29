@@ -10,6 +10,8 @@ urlpatterns = [
     path('api-token-auth/edit/<int:pk>', views.api_update_blog_view),
     path('api-token-auth/delete/<int:pk>', views.api_delete_blog_view),
     path('create', views.api_create_blog_view),
+    path('register', views.register_view),
+
 
     path('category/', views.CategoryList.as_view(),name='category_name'),
     path('category/<int:pk>/', views.CategoryDetail.as_view()),

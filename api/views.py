@@ -7,7 +7,7 @@ from rest_framework import permissions,authentication
 
 # import function and models from are project
 from .forms import NewUserForm,AddBlog
-from .serializers import PostSerializer,UserSerializer,CategorySerializer
+from .serializers import PostSerializer,UserSerializer,CategorySerializer,RegisterSerializer
 from api.models import Post,Category
 from api.permissions import IsOwnerOrReadOnly
 
@@ -73,15 +73,30 @@ def api_delete_blog_view(request,pk):
 
 
 @api_view(['POST', ])
-def api_create_blog_view(request):
-    account = User.objects.get(username = "DavorTelisman")
-    blog_post= Post(owner=account)
+def api_create_blog_view(request,*args, **kwargs):
+    user_id = kwargs.get("api_post.owner_id")
+    blog_post= Post(owner=user_id)
     if request.method == "POST":
         serializers = PostSerializer(blog_post, data=request.data)
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST',])
+def register_view(request):
+    if request.method == "POST":
+        serializers = RegisterSerializer(data=request.data)
+        data = {}
+        if serializers.is_valid():
+            user = serializers.save()
+            data['respones'] ="Thx for register"
+            data['username'] =user.username
+        else:
+            data = serializers.errors
+        return Response(data)
+
 
 
 
