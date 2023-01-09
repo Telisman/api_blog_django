@@ -1,8 +1,10 @@
+<!-- calling all necessary django files and function for this page-->
 {% extends "blog.html" %}
 {% load static %}
 {% block content %}
+<!--  Links for are css and java script files -->
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/update_blog.css' %}">
-
+<!-- form start -->
 {% if user.is_authenticated %}
     {% if user.id == post.owner.id %}
       <div class="container" id="update_blog">
@@ -10,17 +12,10 @@
               {% csrf_token%}
               {{ form.as_p}}
               <button type="submit" value="Submit">Submit</button>
-
           </form>
       </div>
-
-
-
-
-
-
-
-
+<!-- form end -->
+<!-- java script -->
     <script>
         var name ="{{ user.id }}";
         document.getElementById("user").value = name;
@@ -28,7 +23,6 @@
 
     {% endif %}
 {% endif %}
-
 {% endblock %}
 
 

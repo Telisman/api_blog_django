@@ -1,9 +1,13 @@
+<!-- calling all necessary django files and function for this page-->
 {% extends "blog.html" %}
 {% load static %}
 {% block content %}
 {% if user.is_authenticated %}
 
+<!--  Links for are css and java script files -->
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog_detail.css' %}">
+
+<!-- blog delete form div start -->
 <div class="slider-content">
   <div class="number-wrapper">
     <div class="number-count">
@@ -12,19 +16,22 @@
   </div>
   <div class="slider-wrapper">
     <div class="slider-container">
-            <div class="txt-wrapper">
-              <h2><span>{{post.title}}</span> </h2>
-              <p class="excerpt">{{ post.body }} </p>
-              <p class="excerpt1">{{ post.owner }} - {{ post.created }} </p>
-            </div>
-          </div>
+        <div class="txt-wrapper">
+            <h2><span>{{post.title}}</span> </h2>
+            <p class="excerpt">{{ post.body }} </p>
+            <p class="excerpt1">{{ post.owner }} - {{ post.created }} </p>
+        </div>
+    </div>
+
       <form method="post">
             {% csrf_token %}
             <strong>Are you sure?</strong>
             <button class="btn">Delete post!</button>
         </form>
     </div>
-  </div>
+
+</div>
+<!-- blog delete form div end -->
 
 {% endif %}
 {% endblock %}

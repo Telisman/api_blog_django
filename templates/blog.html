@@ -1,16 +1,20 @@
+<!-- calling all necessary django files and function for this page-->
 {% load static %}
 {% if user.is_authenticated %}
+
+
+<!--  Links for are css and java script files -->
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/navbar.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bggraound.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 
+
+<!--    page start  -->
 <body class="bg-gray-900" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-
 
 <!--    Navbar section -->
    <div class="justify-center p-0 max-w-[800px] m-auto">
@@ -21,16 +25,17 @@
                 <li><a href="{% url 'api_posts' %}" target="_blank">API Blog</a></li>
                 <li><a href="{% url 'api_users' %}" target="_blank">API Users</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
-
             </ul>
         </nav>
    </div>
-
 <!--    navbar end          -->
 
 <!--    block content start     -->
 {% block content %}
+
+<!--    info message after register -->
     <div class="info-message"><p style=" font-size: 45px;text-align: center; color: white; border: none;">{{ info }}</p> </div>
+<!--    info message end-->
 
 <!--    section start           -->
     <section id="blog" class="pt-[40px]">
@@ -45,7 +50,7 @@
                     </div>
                 </div>
             </div>
-<!--            end message         -->
+<!--            end section start          -->
 
 
 <!--            start blog list         -->
@@ -95,7 +100,7 @@
 <!--    error message start     -->
 
 
-<!--error message ends      -->
+<!--error message ends  -->
 
 {% endblock %}
     <div class="bg">
@@ -122,5 +127,8 @@
 
 <!-- background end     -->
 </body>
+<!-- page end   -->
+
+<!-- link to java script file   -->
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/404.css' %}">
 {% endif %}

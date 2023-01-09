@@ -1,6 +1,6 @@
+<!-- calling all necessary django files and function for this page-->
 {% load static %}
 {% block content %}
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +11,7 @@
   <title>Blog</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <!--  Links for are css and java script files -->
   <!-- Favicons -->
   <link rel="icon"  href="{% static 'assets/img/favicon.png' %}">
   <link rel="apple-touch-icon"  href="{% static 'assets/img/apple-touch-icon.png' %}">
@@ -29,18 +30,23 @@
 
 </head>
 
+<!--  body start  -->
 <body>
-                <div class="welcome-page">
-                  <div class="corner"></div>
-                  <div class="corner"></div>
-                  <div class="corner"></div>
-                  <div class="corner"></div>
-                  <div class="content">
-                    <p data-shadow="WELCOME"><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span></p>
-                  </div>
-                  <div class="right-vert-line"></div>
-                  <div class="left-vert-line"></div>
-                </div>
+
+<!--  welcome animation message start -->
+  <div class="welcome-page">
+    <div class="corner"></div>
+    <div class="corner"></div>
+    <div class="corner"></div>
+    <div class="corner"></div>
+    <div class="content">
+      <p data-shadow="WELCOME"><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span></p>
+    </div>
+    <div class="right-vert-line"></div>
+    <div class="left-vert-line"></div>
+  </div>
+<!--  welcome animation message end  -->
+
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
@@ -56,7 +62,8 @@
         </div>
       </div>
     </div>
-  </section><!-- End Hero -->
+  </section>
+<!-- End Hero -->
 
 
   <!-- ======= Footer ======= -->
@@ -74,7 +81,8 @@
         </div>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
+<!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -95,6 +103,7 @@
 
 
 </body>
+<!-- end body -->
 
 </html>
 {% endblock %}

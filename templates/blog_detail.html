@@ -1,26 +1,30 @@
+<!-- calling all necessary django files and function for this page-->
 {% extends "blog.html" %}
 {% load static %}
 {% block content %}
 {% if user.is_authenticated %}
 
+<!--  Links for are css and java script files -->
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blog_detail.css' %}">
 
-<div class="slider-content">
-  <div class="number-wrapper">
-    <div class="number-count">
-      <div class="number">{{post.id}}</div>
-    </div>
-  </div>
-  <div class="slider-wrapper">
-    <div class="slider-container">
-            <div class="txt-wrapper">
-              <h2><span>{{post.title}}</span> </h2>
-              <p class="excerpt">{{ post.body }} </p>
-              <p class="excerpt1">{{ post.owner }} - {{ post.created }} </p>
-            </div>
-          </div>
-    </div>
-  </div>
+<!--    start blog detail div -->
+    <div class="slider-content">
+      <div class="number-wrapper">
+        <div class="number-count">
+          <div class="number">{{post.id}}</div>
+        </div>
+      </div>
+      <div class="slider-wrapper">
+        <div class="slider-container">
+                <div class="txt-wrapper">
+                  <h2><span>{{post.title}}</span> </h2>
+                  <p class="excerpt">{{ post.body }} </p>
+                  <p class="excerpt1">{{ post.owner }} - {{ post.created }} </p>
+                </div>
+              </div>
+        </div>
+      </div>
+<!--    end blog detail    -->
 
 
 {% endif %}

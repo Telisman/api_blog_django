@@ -1,3 +1,4 @@
+<!-- calling all necessary django files and function for this page-->
 {% extends "index.html" %}
 {% load static %}
 <!DOCTYPE html>
@@ -5,12 +6,22 @@
 <head>
     <meta charset="UTF-8">
     <title>LoginAndRegister</title>
+<!--	block content start	-->
 	{% block content %}
+
+	<!--  Links for are css and java script files -->
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/loginandregister.css' %}">
+
 </head>
+
+<!--	body start	-->
 <body>
+<!--	div container start -->
+
+<!-- forms section	start -->
 	<div class="container" id="container">
-<!--		<h1 style="color:green;">{{ info }}</h1>-->
+
+<!--	registration form start	-->
 		<div class="form-container sign-up-container">
 			<form action="" method="post">
 				{% csrf_token %}
@@ -21,6 +32,9 @@
 				<button name="sign-up">Sign up</button>
 			</form>
 		</div>
+<!--	registration form end	-->
+
+<!--		login form start	-->
 		<div class="form-container sign-in-container">
 			<form action="" method="get">
 				<h1>Sign in</h1>
@@ -29,7 +43,8 @@
 				<button name="sign-in">Login</button>
 			</form>
 		</div>
-
+<!--	login form end 	-->
+<!--		info message start	-->
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-left">
@@ -49,9 +64,14 @@
 			</div>
 		</div>
 	</div>
+<!--		info message end	-->
+
 	<div class="backbutton" ><button type="button" class="btn btn-secondary" style="border:1px solid white;"><a href="{% url 'home' %}" style="color:white;">Home Page</a></button></div>
 
 </body>
+
+<!--	body end	-->
+
 <script src="{% static 'assets/js/logandreg.js' %}"></script>
 {% endblock %}
 </html>

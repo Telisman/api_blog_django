@@ -1,10 +1,20 @@
+<!-- calling all necessary django files and function for this page-->
 {% extends "blog.html" %}
 {% load static %}
 {% block content %}
 {% if user.is_authenticated %}
+
+<!--  Page start -->
+
+<!--  Links for are css and java script files -->
 <link rel="stylesheet" type="text/css" href="{% static 'assets/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
+
+<!--  massage div after submitting new blog to are web app -->
 <div class="info-message"><p style=" font-size: 45px;text-align: center; color: white; border: none;">{{ info }}</p> </div>
+<!--  end massage-->
+
+<!--    Add blog form start-->
   <div class="container" id="add_blog">
     <form class="w-full max-w-lg" method="post">
       {% csrf_token %}
@@ -51,13 +61,16 @@
       </div>
     </form>
   </div>
+<!--  End blog from -->
+
+
 <!--        script start    -->
 <script>
     var name ="{{ user.id }}";
     document.getElementById("user").value = name;
 </script>
 <!--             script end          -->
-
+<!--  end page  -->
 {% endif %}
 {% endblock %}
 
