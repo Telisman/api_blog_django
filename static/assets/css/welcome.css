@@ -6,7 +6,7 @@
   bottom: 0;
   background: black;
   z-index: 1;
-  animation: moveTop 2s 7s forwards;
+  animation: moveTop 1s 4s forwards;
   color:white;
 }
 
@@ -22,7 +22,7 @@
   font-weight: bold;
   letter-spacing: 20px;
   opacity: 0;
-  animation: opacity 2s 2s forwards 1 ease-in-out;
+  animation: opacity 1s 2s forwards 1 ease-in-out;
   position: relative;
   }
   p {
@@ -31,7 +31,7 @@
     text-align: center;
     opacity: 1;
     text-shadow: 10px 0px 2px rgba(#fff, 0.5);
-    animation: textShadow 3s 4s alternate infinite;
+    animation: textShadow 1s 2s alternate infinite;
     &:before {
       content: attr(data-shadow);
       position: absolute;
@@ -40,7 +40,7 @@
       transform: translate(-50%, 0) scale(2);
       filter: blur(4px);
       opacity: 0;
-      animation: rightToLeft 3s 3s forwards 1 ease-in-out;
+      animation: rightToLeft 2s 2s forwards 1 ease-in-out;
     }
   }
   span {
