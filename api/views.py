@@ -2,8 +2,9 @@
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
 from rest_framework import permissions,authentication
+from rest_framework.permissions import IsAuthenticated
 
 # import function and models from are project
 from .forms import NewUserForm,AddBlog
@@ -26,6 +27,7 @@ from django.contrib.auth.models import User
 
 # Set GET,PUT,DELETE API page with promision
 @api_view(['GET', ])
+@permission_classes((IsAuthenticated,))
 def api_detail_blog_view(request):
 
     try:
@@ -38,12 +40,16 @@ def api_detail_blog_view(request):
         return Response(serializers.data)
 
 @api_view(['PUT', ])
+@permission_classes((IsAuthenticated,))
 def api_update_blog_view(request,pk):
-
     try:
         blog_post = Post.objects.get(id=pk)
     except Post.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    user = request.user
+    if blog_post.owner != user:
+        return Response({'response': "You don't have permission to edit this"})
 
     if request.method == "PUT":
         serializers = PostSerializer(blog_post,data=request.data)
@@ -55,12 +61,16 @@ def api_update_blog_view(request,pk):
         return Response(serializers.errors,status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['DELETE', ])
+@permission_classes((IsAuthenticated,))
 def api_delete_blog_view(request,pk):
-
     try:
         blog_post = Post.objects.get(id=pk)
     except Post.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    user = request.user
+    if blog_post.owner != user:
+        return Response({'response': "You don't have permission to delete this"})
 
     if request.method == "DELETE":
         operation = blog_post.delete()
@@ -73,8 +83,9 @@ def api_delete_blog_view(request,pk):
 
 
 @api_view(['POST', ])
+@permission_classes((IsAuthenticated,))
 def api_create_blog_view(request,*args, **kwargs):
-    user_id = kwargs.get("api_post.owner_id")
+    user_id = request.user
     blog_post= Post(owner=user_id)
     if request.method == "POST":
         serializers = PostSerializer(blog_post, data=request.data)
