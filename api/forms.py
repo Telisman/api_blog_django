@@ -4,11 +4,16 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import Post
 
+
+# user registration form
 class NewUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("id","username", "password1", "password2")
 
+
+
+# blogg add form
 class AddBlog(ModelForm):
     class Meta:
         model = Post

@@ -24,7 +24,7 @@ from django.contrib.auth.models import User
 
 
 
-# Exemple of serializers show blog API
+# Set GET,PUT,DELETE API page with promision
 @api_view(['GET', ])
 def api_detail_blog_view(request):
 
@@ -97,7 +97,7 @@ def register_view(request):
             data = serializers.errors
         return Response(data)
 
-
+# We can set POST,PUT,GET and DELETE on same function to sort are code better, for now I am using this type of code for better understanding
 
 
 
