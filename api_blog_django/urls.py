@@ -5,5 +5,6 @@ urlpatterns = [
     path('', HomePageView, name='home'),
     path('admin/', admin.site.urls),
     path('', include('api.urls')),
+    path('api/', include('api.urls_api')),
     path('', include('django.contrib.auth.urls')),
 ]

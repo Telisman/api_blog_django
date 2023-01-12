@@ -1,0 +1,93 @@
+{% extends "blog.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/api_calls.css' %}">
+<h1 >API Documentation</h1>
+
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>HTTP methods</h1></th>
+			<th><h1>Endpoint</h1></th>
+			<th><h1>Description</h1></th>
+			<th><h1>Authentication &emsp;&emsp;</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>POST</td>
+			<td>https://blog.davor-telisman.com/api/api-token-auth/token</td>
+			<td>In order to see your token, you need to enter your username and password in the displayed endpoint.<br> After that, your unique user token will be displayed, so that you can access certain methods and functions through a third party.<br> (recommendation: use postman as third party)</td>
+			<td>Not required</td>
+		</tr>
+		<tr>
+			<td>GET</td>
+			<td>https://blog.davor-telisman.com/api/posts</td>
+			<td>Endpoint displays a list of all posts added by users. <br>The view will be in JSON format and verification is not required for this view</td>
+			<td>Not required</td>
+		</tr>
+		<tr>
+			<td>GET</td>
+			<td>https://blog.davor-telisman.com/api/posts/pk</td>
+			<td>pk = id of a specific post in our database. Verification is not necessary and the display will be in JSON format.</td>
+			<td>Not required</td>
+		</tr>
+		<tr>
+			<td>GET</td>
+			<td>https://blog.davor-telisman.com/api/users</td>
+			<td>Endpoint displays a list of all users. This method requires verification (Token).<br> JSON file</td>
+			<td>Required</td>
+		</tr>
+    <tr>
+			<td>GET</td>
+			<td>https://blog.davor-telisman.com/api/users/pk</td>
+			<td>pk = user id, token verification is required to display data from the database for the desired user. <br>The password is not included in the display, as is the user's token.</td>
+			<td>Required</td>
+		</tr>
+    <tr>
+			<td>GET</td>
+			<td>https://blog.davor-telisman.com/api/category</td>
+			<td>Endpoint displays a list of all category. This method requires verification (Token). <br> JSON file</td>
+			<td>Required</td>
+		</tr>
+
+		<tr>
+			<td>GET</td>
+			<td>https://blog.davor-telisman.com/api/category/pk</td>
+			<td>pk = id of category, token verification is required to display data from the database for the desired category.</td>
+			<td>Required</td>
+		</tr>
+
+		<tr>
+			<td>PUT</td>
+			<td>https://blog.davor-telisman.com/api/api-token-auth/edit/pk</td>
+			<td>pk = id of post, token verification is required to edit(update)post from the database.<br> The user can only edit the post, if he is its owner.</td>
+			<td>Required</td>
+		</tr>
+
+		<tr>
+			<td>DELETE</td>
+			<td>https://blog.davor-telisman.com/api/api-token-auth/delete/pk</td>
+			<td>pk = id of post, token verification is required to edit(update)post from the database.<br> The user can only edit the post, if he is its owner.</td>
+			<td>Required</td>
+		</tr>
+    <tr>
+			<td>POST</td>
+			<td>https://blog.davor-telisman.com/api/crate</td>
+			<td>For this endpoint, a user can register another user in the database.<br> Verification is required.<br>For additional user will be assigned a new verification token. </td>
+			<td>Required</td>
+		</tr>
+		<tr>
+			<td>POST</td>
+			<td>https://blog.davor-telisman.com/api/register</td>
+			<td>Endpoint for adding new post to are database. Token is required</td>
+			<td>Required</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+{% endif %}
+{% endblock %}

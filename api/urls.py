@@ -1,27 +1,10 @@
+# URL file for blog view web page
+
 from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
-from api import views
 from .views import LoginView,blog,BlogDetailView,UpdateViewBlog,logout_user,AddNewBlog,DeleteBlog
 
 urlpatterns = [
-    # User Serializers urls
-    path('users/', views.UserList.as_view(),name='api_users'),
-    path('users/<int:pk>/', views.UserDetail.as_view()),
-    path('api-token-auth/', views.api_detail_blog_view),
-    path('api-token-auth/edit/<int:pk>', views.api_update_blog_view),
-    path('api-token-auth/delete/<int:pk>', views.api_delete_blog_view),
-    path('create', views.api_create_blog_view),
-    path('register', views.register_view),
-
-    # Category Serializer urls
-    path('category/', views.CategoryList.as_view(),name='category_name'),
-    path('category/<int:pk>/', views.CategoryDetail.as_view()),
-
-    # Blog Serializer urls
-    path('posts/', views.PostList.as_view(),name='api_posts'),
-    path('posts/<int:pk>/', views.PostDetail.as_view()),
-    path('api-auth/', include('rest_framework.urls')),
-
     # Login and Registration urls
     path('logandreg/', include('django.contrib.auth.urls')),
     path('logandreg/', LoginView.as_view(), name='logandreg'),

@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework import permissions,authentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
 
 # import function and models from are project
 from .forms import NewUserForm,AddBlog
@@ -23,7 +25,19 @@ from django.views.generic import UpdateView,DetailView, DeleteView
 from django.contrib.auth.models import User
 
 
+class CustomAuthTokenLogin(ObtainAuthToken):
 
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'username': user.username
+        })
 
 # Set GET,PUT,DELETE API page with promision
 @api_view(['GET', ])
@@ -31,7 +45,7 @@ from django.contrib.auth.models import User
 def api_detail_blog_view(request):
 
     try:
-        blog_post = Post.objects.get()
+        blog_post = Post.objects.all()
     except Post.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -124,7 +138,7 @@ class LoginView(View):
                 login(request ,user)
                 return redirect('blog')
             else:
-                messages.info(request ,'Login attemp failed.')
+                messages.info(request ,'Login attemp failed.Check username or passwords are not in match')
                 return redirect('blog')
         return render(request ,'loginandregister.html' ,{'form' :form})
 
@@ -137,7 +151,7 @@ class LoginView(View):
                 return render(request,'blog.html',{ "info":"Registration successful!" + " New user created: " + request.POST.get('username')})
             else:
                 messages.error(request ,form.errors)
-                return redirect('logandreg')
+                return  redirect('blog')
         return render(request ,'loginandregister.html')
 
 
@@ -172,7 +186,7 @@ class PostList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+class PostDetail(generics.RetrieveAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
@@ -229,3 +243,9 @@ class DeleteBlog(DeleteView):
     model = Post
     template_name = "delete_blog.html"
     success_url = reverse_lazy('blog')
+
+# api documentation
+def api_calls(request):
+    return render(request, "api_calls.html", {})
+
+
