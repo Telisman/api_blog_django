@@ -11,7 +11,11 @@
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/add_blog.css' %}">
 
 <!--  massage div after submitting new blog to are web app -->
-<div class="info-message"><p style=" font-size: 45px;text-align: center; color: white; border: none;">{{ info }}</p> </div>
+
+  <div class="info-message">
+    <p style=" font-size: 45px;text-align: center; color: white; border: none;">{{ info }}</p>
+  </div>
+>
 <!--  end massage-->
 
 <!--    Add blog form start-->
@@ -55,7 +59,7 @@
       <div class="md:flex md:items-center">
         <div class="md:w-1/3">
           <input type="hidden" name="owner" class="form-control" value="" id="user">
-          <button type="submit" value="Submit">Submit</button>
+          <button type="submit" value="Submit" onclick="openPopup()">Submit</button>
         </div>
         <div class="md:w-2/3"></div>
       </div>
@@ -68,6 +72,9 @@
 <script>
     var name ="{{ user.id }}";
     document.getElementById("user").value = name;
+
+
+
 </script>
 <!--             script end          -->
 <!--  end page  -->
