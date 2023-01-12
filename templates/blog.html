@@ -14,30 +14,33 @@
 
 
 <!--    page start  -->
+
 <body class="bg-gray-900" data-new-gr-c-s-check-loaded="14.1089.0" data-gr-ext-installed="">
 
-<!--    Navbar section -->
-   <div class="justify-center p-0 max-w-[800px] m-auto">
+    <!--    Navbar section -->
+    <div class="justify-center p-0 max-w-[800px] m-auto">
         <nav class="navbar">
             <ul>
                 <li><a href="{% url 'blog' %}">Blog</a></li>
-                <li><a href="{% url 'add_blog' %}" >Add new blog</a></li>
+                <li><a href="{% url 'add_blog' %}">Add new blog</a></li>
                 <li><a href="{% url 'api_calls' %}" target="_blank">API Instruction</a></li>
-<!--                <li><a href="{% url 'api_users' %}" target="_blank">API Users</a></li>-->
+                <!--                <li><a href="{% url 'api_users' %}" target="_blank">API Users</a></li>-->
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             </ul>
         </nav>
-   </div>
-<!--    navbar end          -->
+    </div>
+    <!--    navbar end          -->
 
-<!--    block content start     -->
-{% block content %}
+    <!--    block content start     -->
+    {% block content %}
 
-<!--    info message after register -->
-    <div class="info-message"><p style=" font-size: 45px;text-align: center; color: white; border: none;">{{ info }}</p> </div>
-<!--    info message end-->
+    <!--    info message after register -->
+    <div class="info-message">
+        <p style=" font-size: 45px;text-align: center; color: white; border: none;">{{ info }}</p>
+    </div>
+    <!--    info message end-->
 
-<!--    section start           -->
+    <!--    section start           -->
     <section id="blog" class="pt-[40px]">
         <!--    home message            -->
         <div class="container">
@@ -46,14 +49,14 @@
                     <div class="max-w-[600px] mx-auto text-center mb-[70px]">
                         <span class="font-semibold text-lg text-primary block mb-2" data-projection-id="13" style="opacity: 1; transform: none;">Read this</span>
                         <h2 class="font-bold text-white text-3xl sm:text-4xl md:text-[45px] mb-5" data-projection-id="14" style="opacity: 1; transform: none;">My Thoughts</h2>
-                        <p class="font-medium text-lg text-body-color" data-projection-id="15" style="opacity: 1; transform: none;">This is the display of all blog posts from the database. You can open them, and add new ones here <a href="{% url 'add_blog' %}" >Add new blog</a></p>
+                        <p class="font-medium text-lg text-body-color" data-projection-id="15" style="opacity: 1; transform: none;">This is the display of all blog posts from the database. You can open them, and add new ones here <a href="{% url 'add_blog' %}">Add new blog</a></p>
                     </div>
                 </div>
             </div>
-<!--            end section start          -->
+            <!--            end section start          -->
 
 
-<!--            start blog list         -->
+            <!--            start blog list         -->
             <div class="justify-center p-0 max-w-[800px] m-auto">
                 {% for blog in blog_post %}
 
@@ -71,11 +74,11 @@
                                     <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
                                 </h2>
 
-                                        <p class="mb-5 font-light text-gray-400">{{ blog.body|safe|truncatewords:25 }}</p>
-                                        {% if user.id == blog.owner.id %}
-                                            <button id="neonShadow">  <a href="{% url 'update_blog' blog.pk %}"><span>Edit</span></a></button>
-                                            <button id="neonShadow">  <a href="{% url 'delete_blog' blog.pk %}"><span>Delete</span></a></button>
-                                        {% endif %}
+                                <p class="mb-5 font-light text-gray-400">{{ blog.body|safe|truncatewords:25 }}</p>
+                                {% if user.id == blog.owner.id %}
+                                <button id="neonShadow"> <a href="{% url 'update_blog' blog.pk %}"><span>Edit</span></a></button>
+                                <button id="neonShadow"> <a href="{% url 'delete_blog' blog.pk %}"><span>Delete</span></a></button>
+                                {% endif %}
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center space-x-4">
                                         <span class="font-medium text-white">Created by: {{ blog.owner }}</span>
@@ -93,21 +96,21 @@
                 {% endfor %}
 
             </div>
-<!--            end blog list       -->
+            <!--            end blog list       -->
         </div>
     </section>
-<!--    end section             -->
-<!--    arrow up button         -->
+    <!--    end section             -->
+    <!--    arrow up button         -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-<!--    end button-->
+    <!--    end button-->
 
 
-<!--    error message start     -->
+    <!--    error message start     -->
 
 
-<!--error message ends  -->
+    <!--error message ends  -->
 
-{% endblock %}
+    {% endblock %}
     <div class="bg">
         <div class="star-field">
             <div class="layer"></div>
@@ -115,23 +118,23 @@
             <div class="layer"></div>
         </div>
     </div>
-<!--    background  start       -->
+    <!--    background  start       -->
     {% else %}
-<div class="flex-container">
-  <div class="text-center">
-    <h1>
-      <span class="fade-in" id="digit1">4</span>
-      <span class="fade-in" id="digit2">0</span>
-      <span class="fade-in" id="digit3">4</span>
-    </h1>
-    <h3 class="fadeIn">Something is wrong!</h3>
-    <h3 class="fadeIn">Check if you enter correct data (username,password)</h3>
-      <a href="{% url 'logandreg' %}"><button type="button" name="button">Return To Login</button></a>
+    <div class="flex-container">
+        <div class="text-center">
+            <h1>
+                <span class="fade-in" id="digit1">4</span>
+                <span class="fade-in" id="digit2">0</span>
+                <span class="fade-in" id="digit3">4</span>
+            </h1>
+            <h3 class="fadeIn">Something is wrong!</h3>
+            <h3 class="fadeIn">Check if you enter correct data (username,password)</h3>
+            <a href="{% url 'logandreg' %}"><button type="button" name="button">Return To Login</button></a>
 
-  </div>
-</div>
+        </div>
+    </div>
 
-<!-- background end     -->
+    <!-- background end     -->
 </body>
 <!-- page end   -->
 
